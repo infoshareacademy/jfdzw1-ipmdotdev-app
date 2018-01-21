@@ -27,7 +27,7 @@ class App extends Component {
           handleLogging={this.handleLogging}
         />
         <Grid>
-          <Home />
+          <Home userlogged={this.state.userlogged} />
         </Grid>
         <Footer className="footer" />
       </div>
