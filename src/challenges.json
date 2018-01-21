@@ -1,0 +1,24 @@
+[
+  {
+    "id": 0,
+    "title": "Zjedz 3 Snickersy",
+    "description": "Głodny nie jesteś sobą, dasz radę?",
+    "img": "https://robohash.org/snickers?size=100x100",
+    "category": "food",
+    "localization": { "city": "", "country": "Poland" },
+    "progress": 0,
+    "limit": 3,
+    "date": "2018-02-24T02:06:13 -01:00"
+  },
+  {
+    "id": 1,
+    "title": "Odwiedź Muzeum Sztuki Nowoczesnej w Warszawie",
+    "description": "Odcham się chamie!",
+    "img": "https://robohash.org/muzeum?size=100x100",
+    "category": "culture",
+    "localization": { "city": "Warsaw", "country": "Poland" },
+    "progress": 0,
+    "limit": 1,
+    "date": "2018-03-24T02:06:13 -01:00"
+  }
+]
