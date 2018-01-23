@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+import {formInstance} from "./Login"
 
 const Navigation = props => {
   if (props.userlogged) {
@@ -35,7 +36,7 @@ const Navigation = props => {
         <Navbar.Collapse>
           <Nav pullRight>
             <NavItem eventKey={1} href="#" onClick={props.handleLogging}>
-              Logowanie
+                {formInstance}
             </NavItem>
             <NavItem eventKey={2} href="#">
               Rejestracja
