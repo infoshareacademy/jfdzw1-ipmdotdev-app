@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-import {formInstance} from "./Login"
+import {Login} from "./Login"
 
 const Navigation = props => {
   if (props.userlogged) {
@@ -19,7 +19,7 @@ const Navigation = props => {
             </NavItem>
           </Nav>
           <Navbar.Text pullRight>
-            Witaj <Navbar.Link href="#">Chuck Norris</Navbar.Link>!
+            Witaj <Navbar.Link href="#">""</Navbar.Link>!
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
@@ -34,14 +34,7 @@ const Navigation = props => {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="#" onClick={props.handleLogging}>
-                {formInstance}
-            </NavItem>
-            <NavItem eventKey={2} href="#">
-              Rejestracja
-            </NavItem>
-          </Nav>
+            <Login/>
         </Navbar.Collapse>
       </Navbar>
     );

@@ -5,6 +5,15 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import Home from "./scenes/Home";
 import Footer from "./components/Footer";
+import reducer from "./reducers";
+//import {createStore} from "redux/index";
+import {Provider} from "react-redux";
+import {createStore} from "redux";
+
+
+
+const store = createStore(reducer);
+
 
 class App extends Component {
   state = {
@@ -21,7 +30,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+        <Provider store ={store}>
+
+        <div>
         <Navigation
           userlogged={this.state.userlogged}
           handleLogging={this.handleLogging}
@@ -31,6 +42,7 @@ class App extends Component {
         </Grid>
         <Footer className="footer" />
       </div>
+        </Provider>
     );
   }
 }
