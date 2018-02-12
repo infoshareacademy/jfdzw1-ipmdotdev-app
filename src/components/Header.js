@@ -1,8 +1,10 @@
+// PASEK NAWIGACJI
+
 import React, { Component } from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
-import {Login} from "./Login"
+import { SignIn } from "./SignIn";
 
-const Navigation = props => {
+const Header = props => {
   if (props.userlogged) {
     return (
       <Navbar inverse>
@@ -34,11 +36,11 @@ const Navigation = props => {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-            <Login/>
+          <SignIn />
         </Navbar.Collapse>
       </Navbar>
     );
   }
 };
 
-export default Navigation;
+export default Header;
