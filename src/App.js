@@ -1,48 +1,31 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Grid } from "react-bootstrap";
-import "./App.css";
+import "./styles/App.css";
 
-import Navigation from "./components/Navigation";
+import { Provider } from "react-redux";
+import store from "./store";
+
+import Header from "./components/Header";
 import Home from "./scenes/Home";
+import { ChallengeMain } from "./scenes/ChallengeMain";
 import Footer from "./components/Footer";
-import reducer from "./reducers";
-//import {createStore} from "redux/index";
-import {Provider} from "react-redux";
-import {createStore} from "redux";
-
-
-
-const store = createStore(reducer);
-
 
 class App extends Component {
-  state = {
-    userlogged: true
-  };
-
-  handleLogging = () => {
-    if (this.state.userlogged) {
-      this.setState({ userlogged: false });
-    } else {
-      this.setState({ userlogged: true });
-    }
-  };
-
   render() {
     return (
-        <Provider store ={store}>
-
-        <div>
-        <Navigation
-          userlogged={this.state.userlogged}
-          handleLogging={this.handleLogging}
-        />
-        <Grid>
-          <Home userlogged={this.state.userlogged} />
-        </Grid>
-        <Footer className="footer" />
-      </div>
-        </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Grid fluid={true}>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/challenge/:challengeId" component={ChallengeMain} />
+            </Switch>
+            <Footer className="footer" />
+          </Grid>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

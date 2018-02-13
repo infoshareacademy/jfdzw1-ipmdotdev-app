@@ -1,11 +1,13 @@
-import React, {Component} from "react";
+// LOGOWANIE UŻYTKOWNIKA
+
+import React from "react";
 
 import {Form, FormGroup, FormControl, ControlLabel, Button } from "react-bootstrap"
-import reducer from "../reducers/index";
+
 import {connect} from "react-redux"
 
 
-const Login =(props) => {
+const SignIn =(props) => {
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(props)
@@ -28,6 +30,10 @@ const Login =(props) => {
 };
 
 
+const mapStateToProps = state => {
+    return {}
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         signIn: (name) => dispatch({
@@ -37,9 +43,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const connectLogin = connect(null, mapDispatchToProps)(Login);
+const connectSignIn = connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
-export { connectLogin as Login}
+export { connectSignIn as SignIn}
 
 
 

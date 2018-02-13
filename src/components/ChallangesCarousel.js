@@ -1,3 +1,5 @@
+// KARUZELA NA STRONIE GŁÓWNEJ DLA NIEZALOGOWANEGO UŻYTKOWNIKA
+
 import React, { Component } from "react";
 import { Carousel, Row, Col } from "react-bootstrap";
 
