@@ -10,6 +10,9 @@ import Header from "./components/Header";
 import Home from "./scenes/Home";
 import { ChallengeMain } from "./scenes/ChallengeMain";
 import Footer from "./components/Footer";
+import {UserProfile} from "./components/UserProfile";
+import {SignIn} from "./components/SignIn";
+import {SignUp} from "./components/SignUp";
 
 class App extends Component {
   render() {
@@ -21,6 +24,9 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/challenge/:challengeId" component={ChallengeMain} />
+                <Route path="/SignIn" component={SignIn}/>
+                <Route path="/SignUp" component={SignUp}/>
+                <Route path="/UserProfile" component={UserProfile}/>
             </Switch>
             <Footer className="footer" />
           </Grid>

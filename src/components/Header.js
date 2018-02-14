@@ -1,46 +1,64 @@
 // PASEK NAWIGACJI
 
-import React, { Component } from "react";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
-import { SignIn } from "./SignIn";
 
-const Header = props => {
-  if (props.userlogged) {
-    return (
-      <Navbar inverse>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#home">Switcheroo</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="#" onClick={props.handleLogging}>
-              Wyloguj
-            </NavItem>
-          </Nav>
-          <Navbar.Text pullRight>
-            Witaj <Navbar.Link href="#">""</Navbar.Link>!
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  } else {
-    return (
-      <Navbar inverse>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#brand">Switcheroo</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <SignIn />
-        </Navbar.Collapse>
-      </Navbar>
-    );
-  }
+import React from 'react'
+import {Navbar, NavItem, MenuItem, Nav, NavDropdown} from "react-bootstrap";
+import {LinkContainer} from 'react-router-bootstrap';
+import {connect} from "react-redux";
+import {Link} from "react-router-dom"
+
+class Header extends React.Component {
+
+    render() {
+
+        this.state = {
+            login: null
+        };
+
+        return (
+            <Navbar collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <Link to="/">
+                            Switcheroo
+                        </Link>
+                    </Navbar.Brand>
+                    <Navbar.Toggle/>
+                </Navbar.Header>
+
+                <Navbar.Collapse>
+                    <Nav>
+
+                        { this.state.login != null && this.state.login.isLogged === true ? null :
+                            <LinkContainer to={"/SignIn"}>
+                                <NavItem>Logowanie</NavItem>
+                            </LinkContainer>
+                        }
+
+                        <LinkContainer to={"/SignUp"}>
+                            <NavItem>Rejestracja</NavItem>
+                        </LinkContainer>
+
+
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        )
+    }
+}
+
+
+const mapStateToProps = state => {
+    return {
+        login : state.login
+    }
 };
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);
