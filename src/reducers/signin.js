@@ -1,7 +1,7 @@
 // REDUCER DLA KOMPONENTU SignIn
 
 const initState = {
-  userLogged: false
+  userLogged: true
 };
 
 const signInReducer = (state = initState, action) => {

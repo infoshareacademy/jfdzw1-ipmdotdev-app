@@ -38,7 +38,9 @@ class Header extends React.Component {
                         <LinkContainer to={"/SignUp"}>
                             <NavItem>Rejestracja</NavItem>
                         </LinkContainer>
-
+                        <LinkContainer to={"/Home"}>
+                            <NavItem>Profil</NavItem>
+                        </LinkContainer>
 
                     </Nav>
                 </Navbar.Collapse>
