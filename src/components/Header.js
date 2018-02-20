@@ -38,7 +38,7 @@ class Header extends React.Component {
                         <LinkContainer to={"/SignUp"}>
                             <NavItem>Rejestracja</NavItem>
                         </LinkContainer>
-                        <LinkContainer to={"/Home"}>
+                        <LinkContainer to={"/UserProfile"}>
                             <NavItem>Profil</NavItem>
                         </LinkContainer>
 
