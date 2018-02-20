@@ -15,7 +15,6 @@ import {SignIn} from "./components/SignIn";
 import {SignUp} from "./components/SignUp";
 import ChallangesCarousel from "./components/ChallangesCarousel";
 
-
 class App extends Component {
   render() {
     return (
