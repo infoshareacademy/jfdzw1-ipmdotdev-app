@@ -13,9 +13,11 @@ class UserProfile extends Component {
               <div style={{height: 500}}>
                 <img src={"http://via.placeholder.com/150x200"} width={150} height={200}/>
                 <h2>Piotr Redux</h2>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod venenatis dolor vel
-                  efficitur.
-                </div>
+                  <h3>O mnie</h3>
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est.</p>
+                <p>Warszawa</p>
+                  <p>Mężczyza</p>
+                  <p>30 lat</p>
               </div>
             </Col>
             <Col xs={8} md={8}>
