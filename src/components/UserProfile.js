@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Grid, Row, Col, Thumbnail, Button } from "react-bootstrap";
 
 class UserProfile extends Component {
   render() {
@@ -10,13 +10,59 @@ class UserProfile extends Component {
         <Grid>
           <Row className="show-grid">
             <Col xs={6} md={4}>
-              <code>
-                <h1>User</h1>
-                <div style={{backgroundColor: "red", width: 200, height: 200}}></div>
-              </code>
+              <div style={{height: 500}}>
+                <img src={"http://via.placeholder.com/150x200"} width={150} height={200}/>
+                <h2>Piotr Redux</h2>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod venenatis dolor vel
+                  efficitur.
+                </div>
+              </div>
             </Col>
-            <Col xs={12} md={8}>
-              <code></code>
+            <Col xs={8} md={8}>
+              <h2>Aktywne wyzwania:</h2>
+            </Col>
+            <Col xs={6} md={4}>
+              <Thumbnail src="http://via.placeholder.com/350x150" alt="242x200">
+                <h3>Thumbnail label</h3>
+                <p>Description</p>
+                <p>
+                  <Button bsStyle="primary">dodaj</Button>&nbsp;
+                  <Button bsStyle="default">zrezygnuj</Button>
+                </p>
+              </Thumbnail>
+            </Col>
+            <Col xs={6} md={4}>
+              <Thumbnail src="http://via.placeholder.com/350x150" alt="242x200">
+                <h3>Thumbnail label</h3>
+                <p>Description</p>
+                <p>
+                  <Button bsStyle="primary">dodaj</Button>&nbsp;
+                  <Button bsStyle="default">zrezygnuj</Button>
+                </p>
+              </Thumbnail>
+            </Col>
+            <Col xs={8} md={8}>
+              <h2>Propozycje wyzwań:</h2>
+            </Col>
+            <Col xs={6} md={4}>
+              <Thumbnail src="http://via.placeholder.com/350x150" alt="242x200">
+                <h3>Thumbnail label</h3>
+                <p>Description</p>
+                <p>
+                  <Button bsStyle="primary">dodaj</Button>&nbsp;
+                  <Button bsStyle="default">zrezygnuj</Button>
+                </p>
+              </Thumbnail>
+            </Col>
+            <Col xs={6} md={4}>
+              <Thumbnail src="http://via.placeholder.com/350x150" alt="242x200">
+                <h3>Thumbnail label</h3>
+                <p>Description</p>
+                <p>
+                  <Button bsStyle="primary">dodaj</Button>&nbsp;
+                  <Button bsStyle="default">zrezygnuj</Button>
+                </p>
+              </Thumbnail>
             </Col>
           </Row>
         </Grid>
