@@ -3,6 +3,8 @@
 import React from "react";
 
 import {
+  Row,
+  Col,
   Form,
   FormGroup,
   FormControl,
@@ -13,10 +15,6 @@ import {
 import { connect } from "react-redux";
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleSubmit = e => {
     e.preventDefault();
     const loginInput = {
@@ -27,30 +25,46 @@ class SignIn extends React.Component {
   };
 
   render() {
+    const loginBox = (
+      <div>
+        {this.props.hasError && (
+          <p>Logowanie nie powiodło się. Spróbuj ponownie!</p>
+        )}
+        <form inline onSubmit={this.handleSubmit}>
+          <FormGroup controlId="formInlineName">
+            <ControlLabel>Login</ControlLabel>
+            <FormControl
+              type="text"
+              placeholder="Login"
+              inputRef={input => {
+                this.login = input;
+              }}
+            />
+          </FormGroup>
+          <FormGroup controlId="formInlineEmail">
+            <ControlLabel>Hasło</ControlLabel>
+            <FormControl
+              type="password"
+              placeholder="Password"
+              inputRef={input => {
+                this.password = input;
+              }}
+            />
+          </FormGroup>
+          <Button type="submit">Zaloguj</Button>
+        </form>
+      </div>
+    );
     return (
-      <form inline onSubmit={this.handleSubmit}>
-        <FormGroup controlId="formInlineName">
-          <ControlLabel>Login</ControlLabel>
-          <FormControl
-            type="text"
-            placeholder="Login"
-            inputRef={input => {
-              this.login = input;
-            }}
-          />
-        </FormGroup>
-        <FormGroup controlId="formInlineEmail">
-          <ControlLabel>Hasło</ControlLabel>
-          <FormControl
-            type="password"
-            placeholder="Password"
-            inputRef={input => {
-              this.password = input;
-            }}
-          />
-        </FormGroup>
-        <Button type="submit">Zaloguj</Button>
-      </form>
+      <Row>
+        <Col xs={12} sm={4} smOffset={4}>
+          {this.props.userLogged ? (
+            <p className="text-center">Brawo, jesteś zalogowany!</p>
+          ) : (
+            loginBox
+          )}
+        </Col>
+      </Row>
     );
   }
 }
@@ -77,7 +91,8 @@ const authenticateUser = loginInput => {
 
 const mapStateToProps = state => {
   return {
-    userLogged: state.loginStatus.userLogged
+    userLogged: state.loginStatus.userLogged,
+    hasError: state.loginStatus.hasError
   };
 };
 
@@ -87,6 +102,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const connectSignIn = connect(mapStateToProps, mapDispatchToProps)(SignIn);
+const connectedSignIn = connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
-export { connectSignIn as SignIn };
+export { connectedSignIn as SignIn };
