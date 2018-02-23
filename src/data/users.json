@@ -1,20 +1,12 @@
 [
   {
-    "id": 0,
-    "login": "asdf",
-    "password": "1234",
-    "gender": "male",
-    "age": 23,
-    "localization": { "city": "Warsaw", "country": "Poland" },
-    "challenges": []
-  },
-  {
-    "id": 1,
     "login": "qwerty",
     "password": "4321",
     "gender": "female",
     "age": 18,
     "localization": { "city": "Berlin", "country": "Germany" },
-    "challenges": []
+    "challenges": { "challange": []},
+    "decription": "Siemanko, jestem Agnieszka",
+    "avatar": "https://robohash.org/asdf"
   }
 ]

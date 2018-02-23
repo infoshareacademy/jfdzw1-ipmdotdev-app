@@ -29,7 +29,7 @@ const SignUp = () => {
                 <Radio name="radioGroup" inline>
                     male
                 </Radio>{' '}
-                <FieldGroup id="age" label="age" type="number" />
+                <FieldGroup id="age" label="age" type="number" ref={node => this.input = node} />
                 <FieldGroup id="country" label="Country" type="string" />
                 <FieldGroup id="city" label="City" type="string" />
                 <FormGroup controlId="formControlsSelectMultiple">

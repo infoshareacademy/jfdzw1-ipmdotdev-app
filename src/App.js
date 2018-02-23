@@ -10,9 +10,9 @@ import Header from "./components/Header";
 import Home from "./scenes/Home";
 import { ChallengeMain } from "./scenes/ChallengeMain";
 import Footer from "./components/Footer";
-import {UserProfile} from "./components/UserProfile";
-import {SignIn} from "./components/SignIn";
-import {SignUp} from "./components/SignUp";
+import { UserProfile } from "./components/UserProfile";
+import { SignIn } from "./components/SignIn";
+import { SignUp } from "./components/SignUp";
 import ChallangesCarousel from "./components/ChallangesCarousel";
 
 class App extends Component {
@@ -23,13 +23,10 @@ class App extends Component {
           <Grid fluid={true}>
             <Header />
             <Switch>
-              <Route exact path="/" component={store.getState().signInReducer.userLogged?Home:ChallangesCarousel} />
+              <Route exact path="/" component={Home} />
               <Route path="/challenge/:challengeId" component={ChallengeMain} />
-                <Route path="/SignIn" component={SignIn}/>
-                <Route path="/SignUp" component={SignUp}/>
-                <Route path="/UserProfile" component={UserProfile}/>
-                <Route path="/scenes/Home" component={Home}/>
-
+              <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
             </Switch>
             <Footer className="footer" />
           </Grid>
