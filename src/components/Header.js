@@ -27,6 +27,9 @@ class Header extends React.Component {
             <LinkContainer to={"/profile"}>
               <NavItem>Profil</NavItem>
             </LinkContainer>
+            <LinkContainer to={"/addchallenge"}>
+              <NavItem>Dodaj wyzwanie</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

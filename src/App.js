@@ -14,6 +14,7 @@ import { UserProfile } from "./components/UserProfile";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
 import ChallangesCarousel from "./components/ChallangesCarousel";
+import AddChallenge from "./components/AddChallenge";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
               <Route path="/challenge/:challengeId" component={ChallengeMain} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/addchallenge" component={AddChallenge} />
             </Switch>
             <Footer className="footer" />
           </Grid>

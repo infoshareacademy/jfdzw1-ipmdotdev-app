@@ -30,7 +30,7 @@ class SignIn extends React.Component {
         {this.props.hasError && (
           <p>Logowanie nie powiodło się. Spróbuj ponownie!</p>
         )}
-        <form inline onSubmit={this.handleSubmit}>
+        <form inline="true" onSubmit={this.handleSubmit}>
           <FormGroup controlId="formInlineName">
             <ControlLabel>Login</ControlLabel>
             <FormControl
