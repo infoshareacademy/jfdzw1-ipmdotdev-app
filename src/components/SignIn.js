@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 
 class SignIn extends React.Component {
   handleSubmit = e => {
@@ -21,7 +22,7 @@ class SignIn extends React.Component {
       login: this.login.value,
       password: this.password.value
     };
-    this.props.authUser(loginInput);
+    this.props.authUser(loginInput, this.props.history);
   };
 
   render() {
@@ -69,7 +70,7 @@ class SignIn extends React.Component {
   }
 }
 
-const authenticateUser = loginInput => {
+const authenticateUser = (loginInput, history) => {
   return dispatch => {
     dispatch({ type: "PENDING" });
     fetch("http://api.isa-jfdzw1.vipserv.org/ipmdev/user/authenticate", {
@@ -82,6 +83,7 @@ const authenticateUser = loginInput => {
       .then(rsp => rsp.json())
       .then(data => {
         dispatch({ type: "SUCCESS", userData: data });
+        setTimeout(() => history.push("/"), 1500);
       })
       .catch(err => {
         dispatch({ type: "ERROR" });
@@ -98,10 +100,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    authUser: loginInput => dispatch(authenticateUser(loginInput))
+    authUser: (loginInput, history) => dispatch(authenticateUser(loginInput, history))
   };
 };
 
-const connectedSignIn = connect(mapStateToProps, mapDispatchToProps)(SignIn);
+const connectedSignIn = withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));
 
 export { connectedSignIn as SignIn };
