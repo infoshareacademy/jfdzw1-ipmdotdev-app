@@ -9,16 +9,16 @@ const initState = {
 
 const signInReducer = (state = initState, action) => {
   switch (action.type) {
-    case "PENDING":
+    case "SIGNIN_PENDING":
       return { ...state, pending: true };
-    case "SUCCESS":
+    case "SIGNIN_SUCCESS":
       return {
         ...state,
         pending: false,
         userLogged: true,
         userData: action.userData
       };
-    case "ERROR":
+    case "SIGNIN_ERROR":
       return { ...state, pending: false, hasError: true };
     default:
       return state;

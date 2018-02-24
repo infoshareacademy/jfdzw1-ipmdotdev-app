@@ -26,12 +26,12 @@ class SignIn extends React.Component {
   };
 
   render() {
-    const loginBox = (
+    const signInForm = (
       <div>
         {this.props.hasError && (
           <p>Logowanie nie powiodło się. Spróbuj ponownie!</p>
         )}
-        <form inline="true" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="formInlineName">
             <ControlLabel>Login</ControlLabel>
             <FormControl
@@ -62,7 +62,7 @@ class SignIn extends React.Component {
           {this.props.userLogged ? (
             <p className="text-center">Brawo, jesteś zalogowany!</p>
           ) : (
-            loginBox
+            signInForm
           )}
         </Col>
       </Row>
@@ -72,7 +72,7 @@ class SignIn extends React.Component {
 
 const authenticateUser = (loginInput, history) => {
   return dispatch => {
-    dispatch({ type: "PENDING" });
+    dispatch({ type: "SIGNIN_PENDING" });
     fetch("http://api.isa-jfdzw1.vipserv.org/ipmdev/user/authenticate", {
       method: "POST",
       headers: {
@@ -82,19 +82,19 @@ const authenticateUser = (loginInput, history) => {
     })
       .then(rsp => rsp.json())
       .then(data => {
-        dispatch({ type: "SUCCESS", userData: data });
+        dispatch({ type: "SIGNIN_SUCCESS", userData: data });
         setTimeout(() => history.push("/"), 1500);
       })
       .catch(err => {
-        dispatch({ type: "ERROR" });
+        dispatch({ type: "SIGNIN_ERROR" });
       });
   };
 };
 
 const mapStateToProps = state => {
   return {
-    userLogged: state.loginStatus.userLogged,
-    hasError: state.loginStatus.hasError
+    userLogged: state.loginData.userLogged,
+    hasError: state.loginData.hasError
   };
 };
 
