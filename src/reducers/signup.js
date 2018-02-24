@@ -2,19 +2,21 @@
 
 const initState = {
   pending: false,
+  success: false,
   hasError: false,
 };
 
 const signUpReducer = (state = initState, action) => {
   switch (action.type) {
-    case "PENDING":
+    case "SIGNUP_PENDING":
       return { ...state, pending: true };
-    case "SUCCESS":
+    case "SIGNUP_SUCCESS":
       return {
         ...state,
         pending: false,
+        success: true
       };
-    case "ERROR":
+    case "SIGNUP_ERROR":
       return { ...state, pending: false, hasError: true };
     default:
       return state;

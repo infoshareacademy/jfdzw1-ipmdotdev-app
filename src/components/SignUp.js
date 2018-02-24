@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Col,
   Row,
@@ -27,7 +29,7 @@ class SignUp extends React.Component {
       avatar: this.avatar.value
     };
 
-    registerUser(registerInput);
+    this.props.registerUser(registerInput, this.props.history);
   };
 
   render() {
@@ -40,9 +42,11 @@ class SignUp extends React.Component {
         </FormGroup>
       );
     };
-    return (
-        <Row>
-      <Col xs={12} md={6} mdOffset={3}>
+    const signUpForm = (
+      <div>
+        {this.props.hasError && (
+          <p>Wystąpił błąd podczas rejestracji. Spróbuj ponownie!</p>
+        )}
         <form onSubmit={this.handleSubmit}>
           <FieldGroup
             id="formControlsLogin"
@@ -147,20 +151,61 @@ class SignUp extends React.Component {
 
           <Button type="submit">Submit</Button>
         </form>
-      </Col>
+      </div>
+    );
+    return (
+      <Row>
+        <Col xs={12} sm={6} smOffset={3}>
+          {this.props.withSuccess ? (
+            <p className="text-center">
+              Rejestracja się powiodła! Czas się zalogować!
+            </p>
+          ) : (
+            signUpForm
+          )}
+        </Col>
       </Row>
     );
   }
 }
 
-const registerUser = registerInput => {
-  fetch("http://api.isa-jfdzw1.vipserv.org/ipmdev/user", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(registerInput)
-  });
+const registerUser = (registerInput, history) => {
+  return dispatch => {
+    dispatch({ type: "SIGNUP_PENDING" });
+    fetch("http://api.isa-jfdzw1.vipserv.org/ipmdev/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(registerInput)
+    })
+      .then(rsp => rsp.json())
+      .then(() => {
+        dispatch({ type: "SIGNUP_SUCCESS" });
+        setTimeout(() => history.push("/signin"), 1500);
+      })
+      .catch(err => {
+        dispatch({ type: "SIGNUP_ERROR" });
+      });
+  };
 };
 
-export { SignUp };
+const mapStateToProps = state => {
+  return {
+    hasError: state.signUpData.hasError,
+    withSuccess: state.signUpData.success
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    registerUser: (registerInput, history) =>
+      dispatch(registerUser(registerInput, history))
+  };
+};
+
+const connectedSignUp = withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SignUp)
+);
+
+export { connectedSignUp as SignUp };
