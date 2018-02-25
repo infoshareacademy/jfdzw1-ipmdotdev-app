@@ -14,7 +14,7 @@ import { UserProfile } from "./components/UserProfile";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
 import ChallangesCarousel from "./components/ChallangesCarousel";
-import AddChallenge from "./components/AddChallenge";
+import { AddChallenge } from "./components/AddChallenge";
 
 class App extends Component {
   render() {
