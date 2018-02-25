@@ -14,13 +14,13 @@ const challengesReducer = (state = initState, action) => {
     case "ADD_CHALLENGE_PENDING":
       return {
         ...state,
-        addChallengeStatus: { ...addChallangeStatus, pending: true }
+        addChallengeStatus: { ...state.addChallengeStatus, pending: true }
       };
     case "ADD_CHALLENGE_SUCCESS":
       return {
         ...state,
         addChallengeStatus: {
-          ...addChallangeStatus,
+          ...state.addChallengeStatus,
           pending: false,
           success: true
         }
@@ -29,7 +29,7 @@ const challengesReducer = (state = initState, action) => {
       return {
         ...state,
         addChallengeStatus: {
-          ...addChallangeStatus,
+          ...state.addChallengeStatus,
           pending: false,
           hasError: true
         }
