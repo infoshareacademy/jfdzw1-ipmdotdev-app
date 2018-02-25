@@ -11,7 +11,7 @@ const initState = {
     success: false,
     hasError: false
   },
-  allChallenges: []
+  allChallenges: null
 };
 
 const challengesReducer = (state = initState, action) => {
