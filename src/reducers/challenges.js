@@ -6,7 +6,12 @@ const initState = {
     success: false,
     hasError: false
   },
-  challenges: []
+  getAllChallengesStatus: {
+    pending: false,
+    success: false,
+    hasError: false
+  },
+  allChallenges: []
 };
 
 const challengesReducer = (state = initState, action) => {
@@ -34,6 +39,33 @@ const challengesReducer = (state = initState, action) => {
           hasError: true
         }
       };
+    case "GET_ALL_CHALLENGES_PENDING":
+      return {
+        ...state,
+        getAllChallengesStatus: {
+          ...state.getAllChallengesStatus,
+          pending: true
+        }
+      }
+    case "GET_ALL_CHALLENGES_SUCCESS":
+      return {
+        ...state,
+        getAllChallengesStatus: {
+          ...state.getAllChallengesStatus,
+          pending: false,
+          success: true
+        },
+        allChallenges: action.allChallenges
+      }
+    case "GET_ALL_CHALLENGES_ERROR":
+      return {
+        ...state,
+        getAllChallengesStatus: {
+          ...state.getAllChallengesStatus,
+          pending: false,
+          hasError: true
+        }
+      }
     default:
       return state;
   }
