@@ -2,21 +2,22 @@
 // TŁO JAKO ZDJĘCIE, TYTUŁ, OPIS, BEZ SZCZEGÓŁÓW
 
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { Col, Panel, Image } from "react-bootstrap";
 
-const ChallengeBox = props =>  {
-    return <div />;
-  }
-
-
-const mapStateToProps = state => {
-  return {};
+const ChallengeBox = props => {
+  return (
+    <Col xs={6} sm={4}>
+      <Panel>
+        <Panel.Heading>
+          <Panel.Title componentClass="h3">{props.title}</Panel.Title>
+        </Panel.Heading>
+        <Panel.Body>
+          <Image src={props.imgSrc} thumbnail responsive />
+          <p>{props.description}</p>
+        </Panel.Body>
+      </Panel>
+    </Col>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-const connectedChallengeBox = connect(mapStateToProps, mapDispatchToProps)(ChallengeBox);
-
-export {connectedChallengeBox as ChallengeBox};
+export default ChallengeBox;
